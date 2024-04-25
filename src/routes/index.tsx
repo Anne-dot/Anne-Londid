@@ -68,9 +68,6 @@ function Index() {
           </h2>
         </div>
         <div className="flex gap-3">
-          <button className="bg-[#780404] py-3 px-6 text-sm font-semibold text-white rounded-lg">
-            Delete Item
-          </button>
           <button
             onClick={() => setModalOpen(true)}
             className="bg-[#047857] py-3 px-6 text-sm font-semibold text-white rounded-lg"
