@@ -1,7 +1,7 @@
 import { QuerySnapshot, deleteDoc, doc } from "firebase/firestore";
 import db, { Inventory } from "../db";
 import Status, { itemStatusFromText } from "./Status";
-import { TrashIcon } from "@heroicons/react/24/outline";
+import { ArrowUpIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { CheckBadgeIcon } from "@heroicons/react/24/outline";
 interface InventoryTableProps {
   documents: QuerySnapshot<Partial<Inventory>, Partial<Inventory>>;
@@ -52,6 +52,10 @@ export default function InventoryTable({
             await deleteDoc(doc(db.inventory, document.id));
             await refetch();
           };
+          const handleReturn = async () => {
+            await deleteDoc(doc(db.inventory, document.id));
+            await refetch();
+          };
 
           return (
             <>
@@ -90,6 +94,9 @@ export default function InventoryTable({
 
                     <button onClick={handleDelete}>
                       <TrashIcon className="h-5 w-5" />
+                    </button>
+                    <button onClick={handleReturn}>
+                      <ArrowUpIcon className="h-5 w-5" />
                     </button>
                   </div>
                 </td>
